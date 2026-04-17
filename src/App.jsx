@@ -1,4 +1,5 @@
 import './App.css'
+import NavBar from './Components/NavBar'
 
 function App() {
 
@@ -22,7 +23,9 @@ function App() {
       backgroundRepeat: "no-repeat",
     }}
   />
-     {/* Your Content/Components */}
+<div className='relative'>
+    <NavBar />
+</div>
 </div>
     </>
   )

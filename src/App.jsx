@@ -1,6 +1,6 @@
 import './App.css'
-import NavBar from './Components/NavBar'
-
+import TaskList from './Components/TaskList'
+import { TaskContextProvider } from './Context/TaskContextProvider'
 function App() {
 
 
@@ -24,7 +24,12 @@ function App() {
     }}
   />
 <div className='relative'>
-    <NavBar />
+<h2 className='text-3xl font-bold text-center mt-2'>Task manager</h2>
+<TaskContextProvider>
+  <div>
+  <TaskList />
+</div>
+</TaskContextProvider>
 </div>
 </div>
     </>

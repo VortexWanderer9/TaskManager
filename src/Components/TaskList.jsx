@@ -19,17 +19,10 @@ function TaskList() {
   }, [])
 
   useEffect(() =>{
-
-    if(tasks.length <= 0){
-      return
-    } else {
+   
    localStorage.setItem('task', JSON.stringify(tasks))
 
-    }
-  })
-
-
-
+  }, [tasks])
   return (
     <>
   <div className=' mt-2 p-3 flex flex-col items-center'>
@@ -44,10 +37,10 @@ function TaskList() {
       <p className={t.isCompleted ? 'font-bold text-white line-through' : 'font-stretch-50% text-red-900'}>{t.text}</p>
     </div>
    <div className='flex gap-2'>
-     <div className='cursor-pointer' onClick={(e) => handleClick(t.id)}>
+     <div className='cursor-pointer' onClick={() => handleClick(t.id)}>
       <img src={t.isCompleted ? "cross.svg" : "tick.svg"} width={20} alt="Status" />
      </div>
-      <img src="trash.svg" width={15} className='absolute -top-2 -right-1 bg-fuchsia-700 rounded  cursor-pointer' onClick={(e) => deleteT(t.id)} alt="Delete" />
+      <img src="trash.svg" width={15} className='absolute -top-2 -right-1 bg-fuchsia-700 rounded  cursor-pointer' onClick={() => deleteT(t.id)} alt="Delete" />
    </div>
   </div>
   ))}

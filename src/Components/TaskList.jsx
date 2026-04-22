@@ -1,14 +1,35 @@
+import { useEffect } from 'react'
 import { useTask } from '../Context/TaskContextProvider'
 import Search from './Search'
 
 function TaskList() {
-  const {tasks, toggleTask, deleteTask}  = useTask()
+  const {tasks, toggleTask, deleteTask, setTasks}  = useTask()
   const handleClick = (id) =>{
     toggleTask(id)
   }
   const deleteT = (id) => {
-deleteTask(id)
+    deleteTask(id)
   }
+
+  useEffect(() =>{
+    const storedTasks = localStorage.getItem('task')
+    if(storedTasks){
+      setTasks(JSON.parse(storedTasks))
+    }
+  }, [])
+
+  useEffect(() =>{
+
+    if(tasks.length <= 0){
+      return
+    } else {
+   localStorage.setItem('task', JSON.stringify(tasks))
+
+    }
+  })
+
+
+
   return (
     <>
   <div className=' mt-2 p-3 flex flex-col items-center'>
